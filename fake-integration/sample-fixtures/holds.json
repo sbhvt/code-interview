@@ -1,0 +1,186 @@
+{
+  "user1": [
+    {
+      "resource_type": "dvd",
+      "hold_details": {
+        "date_requested": "2022-02-22",
+        "status": "CHECKED_OUT",
+        "date_estimated": "2022-03-18",
+        "branch_requested_from": "Summer Creek",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "dvd_title": "No Country for Old Men"
+      }
+    },
+    {
+      "resource_type": "dvd",
+      "hold_details": {
+        "date_requested": "2022-02-07",
+        "status": "CHECKED_OUT",
+        "date_estimated": "2022-03-10",
+        "branch_requested_from": "Pine Court",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "dvd_title": "Memento"
+      }
+    },
+    {
+      "resource_type": "dvd",
+      "hold_details": {
+        "date_requested": "2022-02-15",
+        "status": "CHECKED_OUT",
+        "date_estimated": "2022-03-12",
+        "branch_requested_from": "Pine Creek",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "dvd_title": "Gran Torino"
+      }
+    },
+    {
+      "resource_type": "dvd",
+      "hold_details": {
+        "date_requested": "2022-02-18",
+        "status": "CHECKED_OUT",
+        "date_estimated": "2022-03-22",
+        "branch_requested_from": "Royal Gardens",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "dvd_title": "Fargo"
+      }
+    },
+    {
+      "resource_type": "book",
+      "hold_details": {
+        "date_requested": "2022-02-28",
+        "status": "AVAILABLE_AT_REQUESTED_BRANCH",
+        "date_estimated": null,
+        "branch_requested_from": "Willow Place",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "book_title": "Françoise Sagan",
+        "book_author": "Elouise Koelpin Sr.",
+        "book_publisher": "Bantam Spectra",
+        "book_genre": "Tall tale"
+      }
+    }
+  ],
+  "user2": [
+    {
+      "resource_type": "book",
+      "hold_details": {
+        "date_requested": "2022-02-17",
+        "status": "AVAILABLE_AT_REQUESTED_BRANCH",
+        "date_estimated": null,
+        "branch_requested_from": "Willow Acres",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "book_title": "The Stars' Tennis Balls",
+        "book_author": "Napoleon O'Hara",
+        "book_publisher": "Pantheon Books at Random House",
+        "book_genre": "Narrative nonfiction"
+      }
+    },
+    {
+      "resource_type": "book",
+      "hold_details": {
+        "date_requested": "2022-02-23",
+        "status": "IN_TRANSIT",
+        "date_estimated": "2022-03-03",
+        "branch_requested_from": "Pine Estates",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "book_title": "Consider Phlebas",
+        "book_author": "Thaddeus Schiller",
+        "book_publisher": "Barrie & Jenkins",
+        "book_genre": "Comic/Graphic Novel"
+      }
+    },
+    {
+      "resource_type": "book",
+      "hold_details": {
+        "date_requested": "2022-02-21",
+        "status": "IN_TRANSIT",
+        "date_estimated": "2022-03-18",
+        "branch_requested_from": "Summer Square",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "book_title": "O Pioneers!",
+        "book_author": "Bennie Stoltenberg",
+        "book_publisher": "Caister Academic Press",
+        "book_genre": "Horror"
+      }
+    },
+    {
+      "resource_type": "book",
+      "hold_details": {
+        "date_requested": "2022-02-07",
+        "status": "CHECKED_OUT",
+        "date_estimated": "2022-03-11",
+        "branch_requested_from": "University Estates",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "book_title": "To Your Scattered Bodies Go",
+        "book_author": "Avery Moore V",
+        "book_publisher": "G-Unit Books",
+        "book_genre": "Biography/Autobiography"
+      }
+    },
+    {
+      "resource_type": "book",
+      "hold_details": {
+        "date_requested": "2022-02-18",
+        "status": "CHECKED_OUT",
+        "date_estimated": "2022-03-16",
+        "branch_requested_from": "Park Gardens",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "book_title": "Pale Kings and Princes",
+        "book_author": "Fr. Sydney Williamson",
+        "book_publisher": "Peace Hill Press",
+        "book_genre": "Science fiction"
+      }
+    },
+    {
+      "resource_type": "book",
+      "hold_details": {
+        "date_requested": "2022-02-28",
+        "status": "CHECKED_OUT",
+        "date_estimated": "2022-03-24",
+        "branch_requested_from": "Paradise Estates",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "book_title": "Bury My Heart at Wounded Knee",
+        "book_author": "Ricky Huels",
+        "book_publisher": "George Newnes",
+        "book_genre": "Reference book"
+      }
+    },
+    {
+      "resource_type": "book",
+      "hold_details": {
+        "date_requested": "2022-02-21",
+        "status": "CHECKED_OUT",
+        "date_estimated": "2022-03-10",
+        "branch_requested_from": "Pine Gardens",
+        "branch_requested_to": "Keele"
+      },
+      "resource_metadata": {
+        "book_title": "A Summer Bird-Cage",
+        "book_author": "Buffy Yundt",
+        "book_publisher": "Shambhala Publications",
+        "book_genre": "Humor"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // helps for setting up test scenarios that might
+    // happen at runtime for places where you can't type check
+    "strict": false,
+    "noUncheckedIndexedAccess": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "incremental": true
+  },
+  "exclude": ["**/build/**", "node_modules", "*.config.js", "*.conf.js", "./build/**/*"],
+  // tsconfig and lint config both exclude folders that begin with "." by default
+  // but I named it originally .devsupport so it floats to the top of the file list
+  // but now that's causing a bunch of extra config yuckiness but not sure whether it's worth it? thoughts?
+  "include": ["**/*"],
+  "files": ["node_modules/jest-extended/types/index.d.ts"]
+}

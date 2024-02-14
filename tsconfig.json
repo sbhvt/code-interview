@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "outDir": "./build",
+    "module": "commonjs",
+    "baseUrl": "./",
+    "target": "es2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "lib": [
+      "es2022"
+    ] /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
+    // "moduleDetection": "auto",
+    // "moduleResolution": "NodeNext",
+    "allowJs": true,
+    "experimentalDecorators": true /* Enable experimental support for legacy experimental decorators. */,
+    "declaration": true /* Generate .d.ts files from TypeScript and JavaScript files in your project. */,
+    "allowSyntheticDefaultImports": true /* Allow 'import x from y' when a module doesn't have a default export. */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "strict": true /* Enable all strict type-checking options. */,
+    "strictPropertyInitialization": false /* Check for class properties that are declared but not set in the constructor. */,
+    "noUnusedLocals": true /* Enable error reporting when local variables aren't read. */,
+    "noUnusedParameters": true /* Raise an error when a function parameter isn't read. */,
+    "noImplicitReturns": true /* Enable error reporting for codepaths that do not explicitly return in a function. */,
+    "noFallthroughCasesInSwitch": true /* Enable error reporting for fallthrough cases in switch statements. */,
+    "noUncheckedIndexedAccess": true /* Add 'undefined' to a type when accessed using an index. */,
+    "allowUnusedLabels": false /* Disable error reporting for unused labels. */,
+    "allowUnreachableCode": false /* Disable error reporting for unreachable code. */,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "skipDefaultLibCheck": true,
+    "composite": true,
+    "incremental": true,
+    // "removeComments": true,
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths"
+      },
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
+    ]
+  },
+  "exclude": [
+    "**/node_modules/**",
+    "**/build/**",
+    "*.config.js",
+    "*.conf.js",
+    "./build/**/*",
+    "test",
+    "**/*.test.*",
+    "**/*.spec.*",
+  ],
+  "types": ["reflect-metadata"],
+  "include": ["./tdd-project"]
+}

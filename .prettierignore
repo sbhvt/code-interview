@@ -1,0 +1,15 @@
+build
+.vscode
+*.md
+*.html
+node_modules
+**/build/**
+.vscode
+*.md
+*.html
+node_modules
+*.conf.js
+/coverage/
+*.config.js
+**/node_modules/**
+fake-integration/**

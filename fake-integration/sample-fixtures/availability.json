@@ -1,0 +1,147 @@
+{
+    "ISBN1234": {
+        "availability": [
+            {
+                "bibType": "PHYSICAL",
+                "availabilityLocationType": "OTHER",
+                "status": "AVAILABLE",
+                "circulationType": "REQUEST",
+                "libraryUseOnly": false,
+                "heldCopies": 0,
+                "availableCopies": 1,
+                "totalCopies": 1,
+                "onOrderCopies": 0,
+                "volumesCount": 0,
+                "localisedStatus": "AVAILABLE_IN_BRANCH",
+                "eresourceDescription": null,
+                "eresourceUrl": null,
+                "singleBranch": false,
+                "branchId": {
+                    "name": "Lutz",
+                    "code": "15"
+                },
+                "libraryStatus": "Checked In",
+                "group": "AVAILABLE_ITEMS",
+                "statusType": "AVAILABLE"
+            },
+            {
+                "bibType": "PHYSICAL",
+                "availabilityLocationType": "OTHER",
+                "status": "AVAILABLE",
+                "circulationType": "REQUEST",
+                "libraryUseOnly": false,
+                "heldCopies": 0,
+                "availableCopies": 1,
+                "totalCopies": 1,
+                "onOrderCopies": 0,
+                "volumesCount": 0,
+                "localisedStatus": "AVAILABLE_IN_BRANCH",
+                "eresourceDescription": null,
+                "eresourceUrl": null,
+                "singleBranch": false,
+                "branchId": {
+                    "name": "University Estates",
+                    "code": "21"
+                },
+                "libraryStatus": "Checked In",
+                "group": "AVAILABLE_ITEMS",
+                "statusType": "AVAILABLE"
+            },
+            {
+                "bibType": "PHYSICAL",
+                "availabilityLocationType": "OTHER",
+                "status": "AVAILABLE",
+                "circulationType": "REQUEST",
+                "libraryUseOnly": false,
+                "heldCopies": 0,
+                "availableCopies": 1,
+                "totalCopies": 1,
+                "onOrderCopies": 0,
+                "volumesCount": 0,
+                "localisedStatus": "AVAILABLE_IN_BRANCH",
+                "eresourceDescription": null,
+                "eresourceUrl": null,
+                "singleBranch": false,
+                "branchId": {
+                    "name": "Park Gardens",
+                    "code": "22"
+                },
+                "libraryStatus": "Checked In",
+                "group": "AVAILABLE_ITEMS",
+                "statusType": "AVAILABLE"
+            }
+        ]
+    },
+    "ISBN4567": {
+        "availability": [
+            {
+                "bibType": "DIGITAL",
+                "availabilityLocationType": "OTHER",
+                "status": "AVAILABLE",
+                "circulationType": "REQUEST",
+                "libraryUseOnly": false,
+                "heldCopies": 0,
+                "availableCopies": 1,
+                "totalCopies": 1,
+                "onOrderCopies": 0,
+                "volumesCount": 0,
+                "localisedStatus": "AVAILABLE_IN_BRANCH",
+                "eresourceDescription": null,
+                "eresourceUrl": null,
+                "singleBranch": false,
+                "branchId": {
+                    "name": "Lutz",
+                    "code": "15"
+                },
+                "libraryStatus": "Checked In",
+                "group": "AVAILABLE_ITEMS",
+                "statusType": "AVAILABLE"
+            },
+            {
+                "bibType": "PHYSICAL",
+                "availabilityLocationType": "OTHER",
+                "status": "CHECKED_OUT",
+                "circulationType": "REQUEST",
+                "libraryUseOnly": false,
+                "heldCopies": 0,
+                "availableCopies": 1,
+                "totalCopies": 1,
+                "onOrderCopies": 0,
+                "volumesCount": 0,
+                "localisedStatus": "CHECKED_OUT",
+                "eresourceDescription": null,
+                "eresourceUrl": null,
+                "singleBranch": false,
+                "branchId": {
+                    "name": "University Estates",
+                    "code": "21"
+                },
+                "libraryStatus": "Checked Out",
+                "statusType": "UNAVAILABLE"
+            },
+            {
+                "bibType": "PHYSICAL",
+                "availabilityLocationType": "OTHER",
+                "status": "HOLD",
+                "circulationType": "REQUEST",
+                "libraryUseOnly": false,
+                "heldCopies": 0,
+                "availableCopies": 1,
+                "totalCopies": 1,
+                "onOrderCopies": 0,
+                "volumesCount": 0,
+                "localisedStatus": "HELD_IN_BRANCH",
+                "eresourceDescription": null,
+                "eresourceUrl": null,
+                "singleBranch": false,
+                "branchId": {
+                    "name": "Park Gardens",
+                    "code": "22"
+                },
+                "libraryStatus": "On Hold",
+                "group": "UNAVAILABLE_ITEMS",
+                "statusType": "UNAVAILABLE"
+            }
+        ]
+    }
+}
