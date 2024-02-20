@@ -1,4 +1,4 @@
-import { HttpClient } from './http';
+import { HttpClient } from './infrastructure/http';
 
 export function helloWorld(): string {
   return 'hello world';

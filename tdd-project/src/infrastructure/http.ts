@@ -1,6 +1,7 @@
+/* eslint-disable max-classes-per-file */
 import axios from 'axios';
 
-type RequestConfig = {
+export type RequestConfig = {
   url: string;
   method: 'get' | 'post' | 'put' | 'delete';
   baseUrl?: string;
@@ -17,11 +18,9 @@ type Response = {
   headers: any;
 };
 
-/** Basic http functionality, more verbs needed */
+/** Basic http functionality */
 interface RequestClient {
   request(config: RequestConfig): Promise<Response>;
-  get(url: string, config?: RequestConfig): Promise<Response>;
-  post(url: string, config?: RequestConfig): Promise<Response>;
 }
 
 // handles axios weirdness in errors
@@ -33,9 +32,29 @@ function convertErrorMessage(error: any) {
   return error.response?.data?.toString() || error.message?.toString() || error?.toString();
 }
 
+export type ConfigurableRequestResponse = {
+  whenRequest: { url: string; method: string };
+
+  responseData: any;
+};
+
+class NullableHttpClient implements RequestClient {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(private requestConfigResponses: { whenRequest: RequestConfig; responseData: any }[] = []) {}
+
+  async request(config: RequestConfig): Promise<Response> {
+    const matching = this.requestConfigResponses.find(
+      (x) => x.whenRequest.url === config.url && x.whenRequest.method === config.method,
+    );
+    if (matching) return { status: 200, statusText: 'ok', data: matching.responseData, headers: {} };
+
+    // not found
+    return { status: 404, statusText: 'NotFound', headers: {}, data: {} };
+  }
+}
+
 /** Wraps basic http request handling */
 export class HttpClient implements RequestClient {
-  // eslint-disable-next-line no-useless-constructor, no-empty-function
   private constructor(
     private reqClient: RequestClient,
     private defaults: Partial<RequestConfig> = {
@@ -47,6 +66,10 @@ export class HttpClient implements RequestClient {
 
   static create(defaults?: RequestConfig) {
     return new HttpClient(axios.create(), defaults);
+  }
+
+  static createNull(configs?: { whenRequest: RequestConfig; responseData: any }[]) {
+    return new HttpClient(new NullableHttpClient(configs));
   }
 
   /** Wraps to handle axios weirdness */
@@ -79,5 +102,13 @@ export class HttpClient implements RequestClient {
 
   post(url: string, config: Partial<RequestConfig> = {}): Promise<Response> {
     return this.request({ url, method: 'post', ...config });
+  }
+
+  put(url: string, config: Partial<RequestConfig> = {}): Promise<Response> {
+    return this.request({ url, method: 'put', ...config });
+  }
+
+  delete(url: string, config: Partial<RequestConfig> = {}): Promise<Response> {
+    return this.request({ url, method: 'put', ...config });
   }
 }
