@@ -25,7 +25,7 @@ router.get('/:id', function (req, res) {
 /** Hacky little function to add a new hold for our fake end to end integration.
  *
  * To test manually with curl:
- * curl -d '{"resource_type":"book","title":"Station Eleven","branch_requested_to":"Keele","branch_requested_from":"Fern Gully"}' -H 'Content-Type: application/json'  http://localhost:2006/holds/user1
+ * curl -d '{"resource_type":"book","isbn":"isbn1","branch_requested_to":"Keele"}' -H 'Content-Type: application/json'  http://localhost:2006/holds/user1
  *
  */
 router.post('/:id', function (req, res) {
@@ -38,18 +38,34 @@ router.post('/:id', function (req, res) {
   const todayPlus3 = new Date(today.setDate(today.getDate() + 3));
   const newHold = {
     resource_type: req.body.resource_type,
+    isbn: req.body.isbn,
     hold_details: {
       date_requested: today.toISOString().substring(0, 10),
-      status: 'CHECKED_OUT',
+      status: 'HOLD_REQUESTED',
       date_estimated: todayPlus3.toISOString().substring(0, 10),
-      branch_requested_from: req.body.branch_requested_from,
+      branch_requested_from: req.body.branch_requested_from || "Fern Gully",
       branch_requested_to: req.body.branch_requested_to,
     },
     resource_metadata: {},
   };
 
-  newHold.resource_metadata[`${req.body.resource_type}_title`] = req.body.title;
-  newHold.resource_metadata[`${req.body.resource_type}_author`] = req.body.author || '';
+  if (req.body.resource_type == 'book') {
+    newHold.isbn = req.body.isbn;
+    if (req.body.isbn === 'isbn1') {
+      newHold.resource_metadata[`${req.body.resource_type}_title`] = 'Station Eleven';
+      newHold.resource_metadata[`${req.body.resource_type}_author`] = 'Emily St. John Mandel';
+    } else if (req.body.isbn === 'isbn2') {
+
+      newHold.resource_metadata[`${req.body.resource_type}_title`] = 'Death on the Nile';
+      newHold.resource_metadata[`${req.body.resource_type}_author`] = 'Agatha Christie';
+    } else if (req.body.isbn === 'isbn3') {
+
+      newHold.resource_metadata[`${req.body.resource_type}_title`] = 'Jurassic Park';
+      newHold.resource_metadata[`${req.body.resource_type}_author`] = 'Michael Crichton';
+    }
+  }
+
+
   holdsForUser.push(newHold);
   holds[req.params.id] = holdsForUser;
 
