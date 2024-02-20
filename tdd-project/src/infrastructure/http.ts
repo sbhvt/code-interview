@@ -10,8 +10,8 @@ export type RequestConfig = {
   params?: any;
 };
 
-type Response = {
-  data?: any;
+type Response<T> = {
+  data?: T;
   error?: any;
   status: number;
   statusText: string;
@@ -20,7 +20,7 @@ type Response = {
 
 /** Basic http functionality */
 interface RequestClient {
-  request(config: RequestConfig): Promise<Response>;
+  request<T>(config: RequestConfig): Promise<Response<T>>;
 }
 
 // handles axios weirdness in errors
@@ -42,14 +42,14 @@ class NullableHttpClient implements RequestClient {
   // eslint-disable-next-line no-useless-constructor
   constructor(private requestConfigResponses: { whenRequest: RequestConfig; responseData: any }[] = []) {}
 
-  async request(config: RequestConfig): Promise<Response> {
+  async request<T>(config: RequestConfig): Promise<Response<T>> {
     const matching = this.requestConfigResponses.find(
       (x) => x.whenRequest.url === config.url && x.whenRequest.method === config.method,
     );
     if (matching) return { status: 200, statusText: 'ok', data: matching.responseData, headers: {} };
 
     // not found
-    return { status: 404, statusText: 'NotFound', headers: {}, data: {} };
+    return { status: 404, statusText: 'NotFound', headers: {} };
   }
 }
 
@@ -73,14 +73,14 @@ export class HttpClient implements RequestClient {
   }
 
   /** Wraps to handle axios weirdness */
-  async request(config: RequestConfig) {
+  async request<T>(config: RequestConfig) {
     try {
       const { data, status, statusText, headers } = await this.reqClient.request({
         ...this.defaults,
         ...config,
       });
       return {
-        data,
+        data: <T>data,
         status,
         statusText,
         headers,
@@ -96,19 +96,19 @@ export class HttpClient implements RequestClient {
     }
   }
 
-  get(url: string, config: Partial<RequestConfig> = {}): Promise<Response> {
-    return this.request({ url, method: 'get', ...config });
+  get<T>(url: string, config: Partial<RequestConfig> = {}): Promise<Response<T>> {
+    return this.request<T>({ url, method: 'get', ...config });
   }
 
-  post(url: string, config: Partial<RequestConfig> = {}): Promise<Response> {
+  post<T>(url: string, config: Partial<RequestConfig> = {}): Promise<Response<T>> {
     return this.request({ url, method: 'post', ...config });
   }
 
-  put(url: string, config: Partial<RequestConfig> = {}): Promise<Response> {
+  put<T>(url: string, config: Partial<RequestConfig> = {}): Promise<Response<T>> {
     return this.request({ url, method: 'put', ...config });
   }
 
-  delete(url: string, config: Partial<RequestConfig> = {}): Promise<Response> {
+  delete<T>(url: string, config: Partial<RequestConfig> = {}): Promise<Response<T>> {
     return this.request({ url, method: 'put', ...config });
   }
 }
