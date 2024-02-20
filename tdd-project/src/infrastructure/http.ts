@@ -109,6 +109,6 @@ export class HttpClient implements RequestClient {
   }
 
   delete<T>(url: string, config: Partial<RequestConfig> = {}): Promise<Response<T>> {
-    return this.request({ url, method: 'put', ...config });
+    return this.request({ url, method: 'delete', ...config });
   }
 }
