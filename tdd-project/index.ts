@@ -1,10 +1,13 @@
-import * as app from './src';
+import { App } from './src';
 
 const main = async () => {
-  console.log(app.helloWorld());
-  const awaitHello = await app.helloWorldAsync();
+  // in a real world app we'd pull this from a param or might derive from auth token, etc.
+  // for sake of time here we will hardcode to allow focus on some other areas
+  const userId = '12345';
 
-  console.log(awaitHello.data);
+  const app = new App();
+  const result = await app.processHolds(userId);
+  console.log(result);
 };
 
-main();
+main(); // this is just the entry point to run
