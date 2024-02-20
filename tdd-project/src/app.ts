@@ -12,14 +12,32 @@ export type BookHold = {
   expectedDate: Date;
 };
 
+export type BookHoldResponse = {
+  newHoldCreated: boolean;
+  newBookHold?: BookHold;
+};
+
 export class App {
   // eslint-disable-next-line class-methods-use-this
-  async processHolds(_userId: string): Promise<BookHold> {
+  async tryReserveNextBookForUser(_userId: string): Promise<BookHoldResponse> {
+    // basic steps from whiteboard or pseudocode, etc.
+
+    // lookup users preferred branch and desired books by user id
+    // if books on list
+    //    get availability status for the books on the list
+    //    determine what book to put on hold based on availability
+    //    if any avail
+    //        put on hold
+    //        return the hold details on the newly held book
+
     return {
-      holdStatus: BookStatus.OnHold,
-      heldDate: new Date(),
-      expectedDate: new Date(),
-      bookIsbn: '1234',
+      newHoldCreated: true,
+      newBookHold: {
+        holdStatus: BookStatus.OnHold,
+        heldDate: new Date(),
+        expectedDate: new Date(),
+        bookIsbn: '1234',
+      },
     };
   }
 }

@@ -6,7 +6,7 @@ const main = async () => {
   const userId = '12345';
 
   const app = new App();
-  const result = await app.processHolds(userId);
+  const result = await app.tryReserveNextBookForUser(userId);
   console.log(result);
 };
 
