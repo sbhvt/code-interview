@@ -1,13 +1,12 @@
-import { HttpClient, RequestConfig } from './http';
+import { HttpClient, ConfigurableRequestResponse } from './http';
 
 const express = require('express');
 
 describe('with nullable configurations', () => {
-  const responseconfiguration: { whenRequest: RequestConfig; responseData: any } = {
+  const responseconfiguration: ConfigurableRequestResponse = {
     whenRequest: {
       url: '/myRoute',
       method: 'get',
-      params: { x: '123' },
     },
     responseData: { hello: 'world' },
   };
@@ -27,6 +26,22 @@ describe('with nullable configurations', () => {
   it('should return as 404 if verb not configured', async () => {
     const result = await nullHttpClient.post('/myRoute');
     expect(result.status).toBe(404);
+  });
+});
+
+describe('with nullable configurations no url restriction', () => {
+  const responseconfiguration: ConfigurableRequestResponse = {
+    whenRequest: {
+      method: 'get',
+    },
+    responseData: { hello: 'world' },
+  };
+
+  const nullHttpClient = HttpClient.createNull([responseconfiguration]);
+
+  it('should return as configured', async () => {
+    const result = await nullHttpClient.get('/myRoute');
+    expect(result.data).toEqual({ hello: 'world' });
   });
 });
 
@@ -69,7 +84,6 @@ describe('with http', () => {
   it('should fail for get with error path', async () => {
     const subject = HttpClient.create();
     const result = await subject.get('http://localhost:5002/error');
-    console.log(result);
     expect(result.status).toBe(500);
   });
 });

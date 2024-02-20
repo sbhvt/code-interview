@@ -33,18 +33,18 @@ function convertErrorMessage(error: any) {
 }
 
 export type ConfigurableRequestResponse = {
-  whenRequest: { url: string; method: string };
+  whenRequest: { url?: string; method: string };
 
   responseData: any;
 };
 
 class NullableHttpClient implements RequestClient {
   // eslint-disable-next-line no-useless-constructor
-  constructor(private requestConfigResponses: { whenRequest: RequestConfig; responseData: any }[] = []) {}
+  constructor(private requestConfigResponses: ConfigurableRequestResponse[] = []) {}
 
   async request<T>(config: RequestConfig): Promise<Response<T>> {
     const matching = this.requestConfigResponses.find(
-      (x) => x.whenRequest.url === config.url && x.whenRequest.method === config.method,
+      (x) => (!x.whenRequest.url || x.whenRequest.url === config.url) && x.whenRequest.method === config.method,
     );
     if (matching) return { status: 200, statusText: 'ok', data: matching.responseData, headers: {} };
 
@@ -68,7 +68,7 @@ export class HttpClient implements RequestClient {
     return new HttpClient(axios.create(), defaults);
   }
 
-  static createNull(configs?: { whenRequest: RequestConfig; responseData: any }[]) {
+  static createNull(configs?: ConfigurableRequestResponse[]) {
     return new HttpClient(new NullableHttpClient(configs));
   }
 
