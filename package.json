@@ -9,7 +9,7 @@
     "run:fakeintegration": "cd ./fake-integration && npm run dev",
     "start": "ts-node ./tdd-project/index.ts",
     "test": "jest --detectOpenHandles",
-    "test:watch": "tsc -b ./tsconfig.project.test.json -- --watch & npm run test -- --watch",
+    "test:watch": "tsc -b ./tsconfig.project.test.json --watch & npm run test -- --watch",
     "clean": "rimraf ./build",
     "transpile": "tsc -p ./tsconfig.json",
     "watch-ts": "tsc -w",
