@@ -38,7 +38,7 @@ export type ConfigurableRequestResponse = {
   responseData: any;
 };
 
-class NullableHttpClient implements RequestClient {
+class StubbedAxios implements RequestClient {
   // eslint-disable-next-line no-useless-constructor
   constructor(private requestConfigResponses: ConfigurableRequestResponse[] = []) {}
 
@@ -69,7 +69,7 @@ export class HttpClient implements RequestClient {
   }
 
   static createNull(configs?: ConfigurableRequestResponse[]) {
-    return new HttpClient(new NullableHttpClient(configs));
+    return new HttpClient(new StubbedAxios(configs));
   }
 
   /** Wraps to handle axios weirdness */
