@@ -25,6 +25,9 @@
   "[markdown]": {
     "editor.wordWrap": "on"
   },
+  "workbench.colorCustomizations": {
+    "editorStickyScroll.background": "#ffffff"
+  },
 
   "typescript.tsdk": "node_modules/typescript/lib"
 }
