@@ -47,10 +47,12 @@ describe('with nullable configurations no url restriction', () => {
 
 describe('with http', () => {
   let server;
+  const port = 5003;
+  const rootPath = `http://127.0.0.1:${port}`;
   beforeAll(async () => {
     // eslint-disable-next-line no-use-before-define
     const app = getTestExpressServer();
-    server = app.listen(5002, '0.0.0.0', () => {});
+    server = app.listen(port, '0.0.0.0', () => {});
   });
   afterAll(async () => {
     server.close((err) => {});
@@ -58,32 +60,32 @@ describe('with http', () => {
 
   it('should succeed for get with valid path', async () => {
     const subject = HttpClient.create();
-    const result = await subject.get('http://localhost:5002/');
+    const result = await subject.get(`${rootPath}/`);
     expect(result.status).toBe(200);
   });
   it('should succeed for post with valid path', async () => {
     const subject = HttpClient.create();
-    const result = await subject.post('http://localhost:5002/');
+    const result = await subject.post(`${rootPath}/`);
     expect(result.status).toBe(200);
   });
   it('should succeed for put with valid path', async () => {
     const subject = HttpClient.create();
-    const result = await subject.put('http://localhost:5002/');
+    const result = await subject.put(`${rootPath}/`);
     expect(result.status).toBe(200);
   });
   it('should succeed for delete with valid path', async () => {
     const subject = HttpClient.create();
-    const result = await subject.delete('http://localhost:5002/');
+    const result = await subject.delete(`${rootPath}/`);
     expect(result.status).toBe(200);
   });
   it('should fail for get with bad path', async () => {
     const subject = HttpClient.create();
-    const result = await subject.get('http://localhost:5002/bad');
+    const result = await subject.get(`${rootPath}/bad`);
     expect(result.status).toBe(404);
   });
   it('should fail for get with error path', async () => {
     const subject = HttpClient.create();
-    const result = await subject.get('http://localhost:5002/error');
+    const result = await subject.get(`${rootPath}/error`);
     expect(result.status).toBe(500);
   });
 });
